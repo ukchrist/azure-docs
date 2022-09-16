@@ -27,7 +27,4 @@ On SHIR machine, open the Microsoft Integration Runtime Configuration Manager ap
 When SHIR logs have been uploaded/sent to us and you are contacting support, provide the Report ID and Timestamp values displayed on the dialog window.
 
 :::image type="content" source="media/sap-change-data-capture-solution/sap-cdc-diagnostics-report-id.png" alt-text="Screenshot of the self-hosted integration runtime's diagnostic log dialog with the Report ID and Timestamp highlighted.":::
- 
-## Next steps
 
-[Auto-generate ADF pipeline from SAP data partitioning template](sap-change-data-capture-data-partitioning-template.md)

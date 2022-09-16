@@ -1,7 +1,7 @@
 ---
-title: Copy and transform data from an SAP ODP source with the SAP CDC connector in Azure Data Factory or Azure Synapse Analytics
+title: Transform data from an SAP ODP source with the SAP CDC connector in Azure Data Factory or Azure Synapse Analytics
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Learn how to copy and transform data from an SAP ODP source to supported sink data stores by using a copy activity and mapping data flows in an Azure Data Factory or Azure Synapse Analytics pipeline.
+description: Learn how to transform data from an SAP ODP source to supported sink data stores by using mapping data flows in Azure Data Factory or Azure Synapse Analytics.
 author: ukchrist
 ms.author: ulrichchrist
 ms.service: data-factory
@@ -11,13 +11,11 @@ ms.custom: synapse
 ms.date: 09/05/2022
 ---
 
-# Copy and transform data from an SAP ODP source using Azure Data Factory or Azure Synapse Analytics
+# Transform data from an SAP ODP source using Azure Data Factory or Azure Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-This article outlines how to use the copy activity in Azure Data Factory and Azure Synapse Analytics pipelines to copy data from an SAP table. For more information, see [Copy activity overview](copy-activity-overview.md).
-
-This article outlines how to use Copy Activity to copy data, and use Data Flow to transform data from an SAP ODP source using the SAP CDC connector. To learn more, read the introductory article for [Azure Data Factory](introduction.md) or [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md). For an introduction to copying and transforming data with Azure Data Factory and Azure Synapse analytics, read [Copy activity overview](copy-activity-overview.md) and [mapping data flow](concepts-data-flow-overview.md).
+This article outlines how to use mapping data flow to transform data from an SAP ODP source using the SAP CDC connector. To learn more, read the introductory article for [Azure Data Factory](introduction.md) or [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md). For an introduction to transforming data with Azure Data Factory and Azure Synapse analytics, [mapping data flow](concepts-data-flow-overview.md).
 
 >[!TIP]
 >To learn the overall support on SAP data integration scenario, see [SAP data integration using Azure Data Factory whitepaper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) with detailed introduction on each SAP connector, comparsion and guidance.
@@ -28,13 +26,9 @@ This SAP CDC connector is supported for the following capabilities:
 
 | Supported capabilities|IR |
 |---------| --------|
-|[Copy activity](copy-activity-overview.md) (source/-)|&#9313;|
 |[Mapping data flow](concepts-data-flow-overview.md) (source/-)|&#9313;|
-|[Lookup activity](control-flow-lookup-activity.md)|&#9313;|
 
 <small>*&#9312; Azure integration runtime &#9313; Self-hosted integration runtime*</small>
-
-For a list of the data stores that are supported as sources or sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
 This SAP CDC connector leverages the SAP ODP framework to extract data from SAP source systems. For an introduction to the architecture of the solution, read [Introduction and architecture to SAP change data capture (CDC)](sap-change-data-capture-introduction-architecture.md) in our [SAP knowledge center](industry-sap-overview.md).
 
@@ -69,11 +63,7 @@ To prepare an SAP CDC dataset, follow [Prepare the SAP ODP source dataset](sap-c
 
 ## Copy or transform data with the SAP CDC connector
 
-SAP CDC datasets can be used as source in Copy activity or Mapping data flow. While Copy activity will only allow you to land the raw change data feed coming from the ODP source, integration into Mapping data flow takes care of interpreting the change data feed correctly by evaluating technical attributes provided by the ODP framework (e.g., ODQ_CHANGEMODE) automatically. This allows users to concentrate on the required transformation logic without having to bother with the internals of the SAP ODP change feed.  
-
-### Copy activity properties
-
-To configure a copy activity for an SAP CDC source dataset, follow [Create a copy activity with an SAP CDC data source](sap-change-data-capture-copy-activity.md#create-a-copy-activity-with-an-sap-cdc-data-source).
+SAP CDC datasets can be used as source in mapping data flow. Mapping data flow takes care of interpreting the change data feed (or delta records) correctly by evaluating technical attributes provided by the ODP framework (e.g., ODQ_CHANGEMODE) automatically. This allows users to concentrate on the required transformation logic without having to bother with the internals of the SAP ODP change feed.
 
 ### Mapping data flow properties
 
